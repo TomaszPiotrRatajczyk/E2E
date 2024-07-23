@@ -15,15 +15,15 @@ describe('Binance', () => {
   it('addBit',() =>{
     const mainPageObj = new mainPage();
     const loginObj = new Login;
-    const valueX = '0,' + Math.random().toString().substr(2, 2);
-    const valueY = '0,' + Math.random().toString().substr(2, 2);
+    const valueX = 1//'0.' + Math.random().toString().substr(2, 2);
+    const valueY = 2//'0.' + Math.random().toString().substr(2, 2);
     const totalValue = valueX + valueY;
 
     loginObj.Login();
     mainPageObj.hotFeaturClose();
-    mainPageObj.addValue(valueX); //Input kasuje '0,' przy wpiswaniu. Nie mogłem tego przejść.
+    mainPageObj.addValue(valueX); 
     mainPageObj.addPosition();
-    mainPageObj.checkPosition(valueX.replace(',', '.'));
+    mainPageObj.checkPosition(valueX  );
 
 
   })

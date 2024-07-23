@@ -5,6 +5,7 @@ class mainPage{
         nextButton : () => cy.get('[data-bn-type=button]').contains('Next'),
         buyinput : () => cy.get('input[id^="unitAmount-'),
         buyButton: () => cy.get('[type=submit]').contains('Buy/Long'),
+        marketTab: () => cy.get('[date-testid=market]'),
         
         }
 
@@ -23,10 +24,15 @@ class mainPage{
     }
 
     addValue(value){
-        this.elements.buyinput().type(value, {force:true});
+        //Market tab has to be active - tab
+        if(this.elements.marketTab().should('have.class', 'tab')){
+            this.elements.marketTab().click();
+        }
+        this.elements.buyinput().type(value, {hold: 1}).blur();
     }
 
     checkPosition(valueBTC){
+        cy.reload();
         cy.contains('list-item-container', valueBTC).should('equal', valueBTC);
     }
 
