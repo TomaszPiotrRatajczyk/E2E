@@ -7,16 +7,16 @@ Login(){
     const mainPageObj = new mainPage();
     const loginpageObj = new loginPage();
  
-    
-
     cy.visit('/');
-    mainPageObj.clickConfirm();
+    mainPageObj.hotFeaturClose();
     mainPageObj.clickEmailLogin();
-    cy.url().should('include', 'en/login')
+    cy.url().should('include', 'en/login');
     loginpageObj.typeEmail();
     loginpageObj.typePassword();
     loginpageObj.logIn();
-    cy.wait(15000)
+    mainPageObj.hotFeaturClose();
+    cy.wait(15000);
+    
 
 }
 
